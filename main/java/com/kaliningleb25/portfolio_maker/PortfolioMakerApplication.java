@@ -2,6 +2,7 @@ package com.kaliningleb25.portfolio_maker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class PortfolioMakerApplication {
@@ -10,3 +11,4 @@ public class PortfolioMakerApplication {
 		SpringApplication.run(PortfolioMakerApplication.class, args);
 	}
 }
+
