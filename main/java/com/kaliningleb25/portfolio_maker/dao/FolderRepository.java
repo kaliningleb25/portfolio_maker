@@ -4,8 +4,10 @@ import com.kaliningleb25.portfolio_maker.entity.Folder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface FolderRepository extends JpaRepository<Folder, Long> {
     // Just one for first time
     @Query("SELECT u FROM Folder u WHERE u.userNickname = ?1")
-    Folder findFolderByUserNickname(String nickname);
+    List<Folder> findFolderByUserNickname(String nickname);
 }

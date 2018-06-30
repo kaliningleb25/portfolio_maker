@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/normalize.css}" rel="stylesheet" href="../static/css/normalize.css" type="text/css">
+
+    <!--<div th:replace="fragments/header :: header-css"/>-->
+    <link th:href="@{/css/picture_style.css}" rel="stylesheet" href="../static/css/picture_style.css">
+    <link th:href="@{/css/navigation_style.css}" rel="stylesheet" href="../static/css/navigation_style.css">
+    <link th:href="@{/css/gallery_style.css}" rel="stylesheet" href="../static/css/gallery_style.css">
+    <link th:href="@{/css/contact_info_style.css}" rel="stylesheet" href="../static/css/contact_info_style.css">
+
+
+</head>
+<body>
+<!--<div th:replace="fragments/header :: header"/>-->
+
+<!--<p th:text="${userNickname}"></p>-->
+
+
+<div class="gallery">
+    <div class="gallery__intro">
+        <h1 class="gallery__title" th:text="${userNickname}"></h1>
+        <!--<ul>-->
+
+            <!--<#list folders as folder>-->
+                <!--<li>-->
+                    <!--<a href="/${user_nickname}/picturesList?id=${folder.id}">-->
+                        <!--<img src="/folder?id=${folder.id}"/>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</#list>-->
+        <!--</ul>-->
+
+        <ul>
+            <li th:each="folder : ${folders}">
+                <a th:href="@{/userNickname(id=${folder.id})}">
+                    <img th:src="@{/folder(id=${folder.id})}">
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+</div>
+    <!--<#include "js/gallery_js/swipe_js.js">-->
+        <!--<#include "js/gallery_js/main_js.js">-->
+
+            <!--<#include "footer.ftl">-->
+
+    <script type="text/javascript" src="../static/js/gallery_js/swipe_js.js"></script>
+    <script type="text/javascript" src="../static/js/gallery_js/main_js.js"></script>
+
+</body>
+</html>
