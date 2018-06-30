@@ -66,12 +66,12 @@ public class MainController {
     }
 
     @GetMapping("/{user_nickname}")
-    public String showPictures(@PathVariable("user_nickname") String userNickname, @RequestParam("folder_id") int folderId) {
+    public String showPictures(@PathVariable("user_nickname") String userNickname, @RequestParam("folder_id") Long folderId) {
         throw new UnsupportedOperationException();
     }
 
     @GetMapping(value="/folder")
-    public String showImage(@RequestParam("id") int id, HttpServletResponse response) {
+    public String showImage(@RequestParam("id") Long id, HttpServletResponse response) {
         Folder folder = folderService.findFolder(id);
 
         response.setContentType("image/jpeg; image/jpg; image/png; image/gif");

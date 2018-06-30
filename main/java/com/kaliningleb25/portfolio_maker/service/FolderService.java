@@ -7,5 +7,5 @@ import java.util.List;
 public interface FolderService {
     List<Folder> findFolders(String userNickname);
 
-    Folder findFolder(int id);
+    Folder findFolder(Long id);
 }

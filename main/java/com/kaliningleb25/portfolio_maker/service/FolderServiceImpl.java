@@ -18,8 +18,8 @@ public class FolderServiceImpl implements FolderService {
     }
 
     @Override
-    public Folder findFolder(int id) {
-        return folderRepository.getOne((long) id);
+    public Folder findFolder(Long id) {
+        return folderRepository.getOne(id);
     }
 
 
