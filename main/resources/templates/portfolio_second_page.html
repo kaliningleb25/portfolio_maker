@@ -9,33 +9,29 @@
     <link th:href="@{/css/gallery_style.css}" rel="stylesheet" href="../static/css/gallery_style.css">
     <link th:href="@{/css/contact_info_style.css}" rel="stylesheet" href="../static/css/contact_info_style.css">
 
-
 </head>
 <body>
-<!--<div th:replace="fragments/header :: header"/>-->
 
 <div class="gallery">
     <div class="gallery__intro">
-        <h1 class="gallery__title" th:text="${userNickname}"></h1>
+        <h1 class="gallery__title"><a th:href="|/${userNickname}|" th:text="${userNickname}"> portfolio </a></h1>
+
+
         <ul>
-            <li th:each="folder : ${folders}">
-                <!--<a th:href="@{/userNickname/${folder.id}}">-->
-                <!--<a th:href="@{/${userNickname}/picturesList(folder_id = ${folder.id})}">-->
-
-                <!--<a th:href="@{|${userNickname}/picturesList(folder_id=${folder.id})|}">-->
-                <a th:href="@{${userNickname} + '/picturesList?folder_id=' + ${folder.id}}">
-
-                    <img th:src="@{/folder(id=${folder.id})}">
+            <li class="gallery__item" draggable="true" th:each="picture : ${pictures}">
+                <a class="gallery__itemLink" th:href="@{/picture(id=${picture.id})}" data-rel="aiLightbox">
+                    <img class="gallery__itemThumb" th:src="@{/picture(id=${picture.id})}">
                 </a>
             </li>
         </ul>
+
     </div>
 </div>
 
 <script src="/js/gallery_js/swipe_js.js"></script>
 <script src="/js/gallery_js/main_js.js"></script>
 
-
 <!-- footer -->
+
 </body>
 </html>

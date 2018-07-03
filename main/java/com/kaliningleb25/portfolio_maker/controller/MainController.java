@@ -1,7 +1,9 @@
 package com.kaliningleb25.portfolio_maker.controller;
 
 import com.kaliningleb25.portfolio_maker.entity.Folder;
+import com.kaliningleb25.portfolio_maker.entity.Picture;
 import com.kaliningleb25.portfolio_maker.service.FolderService;
+import com.kaliningleb25.portfolio_maker.service.PictureService;
 import com.kaliningleb25.portfolio_maker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class MainController {
 
     @Autowired
     FolderService folderService;
+
+    @Autowired
+    PictureService pictureService;
 
     @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
@@ -65,13 +70,19 @@ public class MainController {
         return "portfolio_first_page";
     }
 
-    @GetMapping("/{user_nickname}")
-    public String showPictures(@PathVariable("user_nickname") String userNickname, @RequestParam("folder_id") Long folderId) {
-        throw new UnsupportedOperationException();
+    @GetMapping("/{user_nickname}/picturesList")
+    public String showPictures(@PathVariable("user_nickname") String userNickname, @RequestParam("folder_id") Long folderId, Model model) {
+        List<Picture> pictureList = pictureService.findPictures(folderId);
+
+        model.addAttribute("pictures", pictureList);
+        model.addAttribute("userNickname", userNickname);
+
+
+        return "portfolio_second_page";
     }
 
     @GetMapping(value="/folder")
-    public String showImage(@RequestParam("id") Long id, HttpServletResponse response) {
+    public String showFolder(@RequestParam("id") Long id, HttpServletResponse response) {
         Folder folder = folderService.findFolder(id);
 
         response.setContentType("image/jpeg; image/jpg; image/png; image/gif");
@@ -87,9 +98,27 @@ public class MainController {
             }
         }
 
-
-
         return "folder";
+    }
+
+    @GetMapping(value="/picture")
+    public String showPicture(@RequestParam("id") Long id, HttpServletResponse response) {
+        Picture picture = pictureService.findPicture(id);
+
+        response.setContentType("image/jpeg; image/jpg; image/png; image/gif");
+        try {
+            response.getOutputStream().write(picture.getDataInBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                response.getOutputStream().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return "picture";
     }
 
 

@@ -14,7 +14,7 @@ public class FolderServiceImpl implements FolderService {
 
     @Override
     public List<Folder> findFolders(String userNickname) {
-        return folderRepository.findFolderByUserNickname(userNickname);
+        return folderRepository.findFoldersByUserNickname(userNickname);
     }
 
     @Override

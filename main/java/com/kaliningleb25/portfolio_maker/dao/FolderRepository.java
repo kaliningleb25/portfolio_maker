@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface FolderRepository extends JpaRepository<Folder, Long> {
-    // Just one for first time
     @Query("SELECT u FROM Folder u WHERE u.userNickname = ?1")
-    List<Folder> findFolderByUserNickname(String nickname);
+    List<Folder> findFoldersByUserNickname(String nickname);
 }
