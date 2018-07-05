@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <!--<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+
+    <div class="starter-template">
+
+        <li th:each="user : ${users}">
+            <a th:href="|/${user.nickname}|" th:text="${user.nickname}"></a>
+        </li>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+
+
+<!--<div th:replace="fragments/footer :: footer"/>-->
+
+
+
+</body>
+</html>
