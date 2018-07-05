@@ -14,7 +14,7 @@
 
 <div class="gallery">
     <div class="gallery__intro">
-        <h1 class="gallery__title"><a th:href="|/${userNickname}|" th:text="${userNickname}"> portfolio </a></h1>
+        <h1 class="gallery__title"><a th:href="|/${user.nickname}|" th:text="${user.nickname}"> portfolio </a></h1>
 
 
         <ul>
@@ -32,6 +32,7 @@
 <script src="/js/gallery_js/main_js.js"></script>
 
 <!-- footer -->
+<div th:include="fragments/footer :: footer" class="footer"/>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.kaliningleb25.portfolio_maker.controller;
 
 import com.kaliningleb25.portfolio_maker.entity.Folder;
 import com.kaliningleb25.portfolio_maker.entity.Picture;
+import com.kaliningleb25.portfolio_maker.entity.User;
 import com.kaliningleb25.portfolio_maker.service.FolderService;
 import com.kaliningleb25.portfolio_maker.service.PictureService;
 import com.kaliningleb25.portfolio_maker.service.UserService;
@@ -61,21 +62,23 @@ public class MainController {
     }
 
     @GetMapping("/{user_nickname}")
-    public String showFolders(@PathVariable("user_nickname") String userNickname, Model model) {
-        List<Folder> folderList = folderService.findFolders(userNickname);
+    public String showFolders(@PathVariable("user_nickname") String nickname, Model model) {
+        List<Folder> folderList = folderService.findFolders(nickname);
+        User user = userService.findUserByNickname(nickname);
 
         model.addAttribute("folders", folderList);
-        model.addAttribute("userNickname", userNickname);
+        model.addAttribute("user", user);
 
         return "portfolio_first_page";
     }
 
     @GetMapping("/{user_nickname}/picturesList")
-    public String showPictures(@PathVariable("user_nickname") String userNickname, @RequestParam("folder_id") Long folderId, Model model) {
+    public String showPictures(@PathVariable("user_nickname") String nickname, @RequestParam("folder_id") Long folderId, Model model) {
         List<Picture> pictureList = pictureService.findPictures(folderId);
+        User user = userService.findUserByNickname(nickname);
 
         model.addAttribute("pictures", pictureList);
-        model.addAttribute("userNickname", userNickname);
+        model.addAttribute("user", user);
 
 
         return "portfolio_second_page";

@@ -16,14 +16,14 @@
 
 <div class="gallery">
     <div class="gallery__intro">
-        <h1 class="gallery__title" th:text="${userNickname}"></h1>
+        <h1 class="gallery__title" th:text="${user.nickname}"></h1>
         <ul>
             <li th:each="folder : ${folders}">
                 <!--<a th:href="@{/userNickname/${folder.id}}">-->
                 <!--<a th:href="@{/${userNickname}/picturesList(folder_id = ${folder.id})}">-->
 
                 <!--<a th:href="@{|${userNickname}/picturesList(folder_id=${folder.id})|}">-->
-                <a th:href="@{${userNickname} + '/picturesList?folder_id=' + ${folder.id}}">
+                <a th:href="@{${user.nickname} + '/picturesList?folder_id=' + ${folder.id}}">
 
                     <img th:src="@{/folder(id=${folder.id})}">
                 </a>
@@ -32,10 +32,12 @@
     </div>
 </div>
 
+<!-- footer -->
+<div th:include="fragments/footer :: footer" class="footer"/>
+
+
+
 <script src="/js/gallery_js/swipe_js.js"></script>
 <script src="/js/gallery_js/main_js.js"></script>
-
-
-<!-- footer -->
 </body>
 </html>
