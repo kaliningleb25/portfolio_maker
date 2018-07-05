@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+<div th:fragment="footer">
+    <!--<div class="container">-->
+        <!--<footer>-->
+            <!--&lt;!&ndash; FOOTER &ndash;&gt;-->
+            <!--&lt;!&ndash; Благодаря дополнительной библиотеке которую мы опционально подключали в pom мы моежм использовать-->
+            <!--вспомогательные теги и без особых трудностей выводить имя пользователя на странице-->
+            <!--ВАЖНО! Старайтесь писать на английском, даже если не имеете подобного опыта(переводчик),-->
+            <!--это сэкономит вам нервы(проблемы с кодировками, фильтры) и даст бесценный опыт в будущем &ndash;&gt;-->
+            <!--© 2018 portfolio-maker.ru-->
+            <!--<span sec:authorize="isAuthenticated()">| Logged user: <span sec:authentication="name"></span> |-->
+                <!--Roles: <span sec:authentication="principal.authorities"></span> |-->
+                <!--<a th:href="@{/logout}">Sign Out</a>-->
+            <!--</span>-->
+            <!--<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+        <!--</footer>-->
+    <!--</div>-->
+
+
+
+
+    <!--&lt;!&ndash;<#if user.email??>&ndash;&gt;-->
+        <!--<a href="mailto:${user.email}?Subject=Portfolio"><img class="logo" th:src="@{/images/logos/mail2.png}"></a>-->
+    <!--&lt;!&ndash;</#if>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<#if user.tNumber??>&ndash;&gt;-->
+        <!--<a href="tel:${user.tNumber}"><img class="logo" th:src="@{/images/logos/phone2.png}"></a>-->
+    <!--&lt;!&ndash;</#if>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<#if user.instagramLink??>&ndash;&gt;-->
+        <!--<a target="_blank" href="${user.instagramLink}"><img class="logo" th:src="@{/images/logos/instagram2.png}"></a>-->
+    <!--&lt;!&ndash;</#if>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<#if user.vkLink??>&ndash;&gt;-->
+        <!--<a target="_blank" href="${user.vkLink}"><img class="logo" th:src="@{/images/logos/vk2.png}"></a>-->
+    <!--&lt;!&ndash;</#if>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<#if user.facebookLink??>&ndash;&gt;-->
+        <!--<a target="_blank" href="${user.facebookLink}"><img class="logo" th:src="@{/images/logos/facebook2.png}"></a>-->
+    <!--&lt;!&ndash;</#if>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<#if user.skype??>&ndash;&gt;-->
+        <!--<a href="skype:${user.skype}?call"><img class="logo" th:src="@{/images/logos/skype2.png}"></a>-->
+    <!--&lt;!&ndash;</#if>&ndash;&gt;-->
+
+
+
+    <!--<#if user.email??>-->
+    <a th:href="@{'mailto:' + ${user.email} + '?Subject=Portfolio'}"><img class="logo" th:src="@{/images/logos/mail2.png}"></a>
+    <!--</#if>-->
+
+    <!--<#if user.tNumber??>-->
+    <a th:href="@{'tel:' + ${user.tNumber}}"><img class="logo" th:src="@{/images/logos/phone2.png}"></a>
+    <!--</#if>-->
+
+    <!--<#if user.instagramLink??>-->
+    <a target="_blank" th:href="@{${user.instagramLink}}"><img class="logo" th:src="@{/images/logos/instagram2.png}"></a>
+    <!--</#if>-->
+
+    <!--<#if user.vkLink??>-->
+    <a target="_blank" th:href="@{${user.vkLink}}"><img class="logo" th:src="@{/images/logos/vk2.png}"></a>
+    <!--</#if>-->
+
+    <!--<#if user.facebookLink??>-->
+    <a target="_blank" th:href="@{${user.facebookLink}}"><img class="logo" th:src="@{/images/logos/facebook2.png}"></a>
+    <!--</#if>-->
+
+    <!--<#if user.skype??>-->
+    <a th:href="'skype:' + ${user.skype} + '?call'"><img class="logo" th:src="@{/images/logos/skype2.png}"></a>
+    <!--</#if>-->
+
+
+
+
+
+
+    TODO: Сделать рабочие ссылки!
+
+</div>
+
+</body>
+</html>
