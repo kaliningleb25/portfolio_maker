@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+    <!--<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+
 </head>
 <body>
-<h1> Index test</h1>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+
+    <div class="starter-template">
+
+        <li th:each="user : ${users}">
+            <a th:href="|/${user.nickname}|" th:text="${user.nickname}"></a>
+        </li>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+
+
+<!--<div th:replace="fragments/footer :: footer"/>-->
+
+
+
 </body>
 </html>
